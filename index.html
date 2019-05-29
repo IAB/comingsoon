@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="background_styles.css">
+      <link rel="stylesheet" href="styles.css">
+      <title>Responsive Video Background</title>
+      <style type="text/css">
+        * { text-decoration: none;}
+
+
+h1{
+    position: relative;
+color: white;
+font-size: 50px;
+letter-spacing: .15em;
+text-shadow: 3px 3px 7px #333;
+z-index: 0;
+font-family: 'Nunito Sans', sans-serif;
+}  
+
+
+.button {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 13px 25px 11px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #222;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+a:link{
+        color: #fff;
+        text-decoration: none;
+    }
+    a:visited{
+        color: #fff;
+    }
+    a:hover {
+    color: #fff;
+}
+
+.text{
+    margin: 4px 5px;
+    padding: 7px 25px;
+    opacity: 0.3;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}
+#audio1{
+  opacity: .1;
+  transition: opacity ease-in 500ms;
+}
+#audio1:hover{
+  opacity: .6;
+}
+
+
+      </style>
+    </head>
+    <body>
+      <div class="full-screen-video-container">
+        <video autoplay loop muted>
+          <source src="4.mp4" type="video/mp4" />
+        </video>
+         
+        <div class="full-screen-video-content">
+          <div class="typewriter">
+  <center>
+<h1 style="padding : 40px; margin: 50px;">
+  <a href="" class="typewrite" data-period="2000" data-type='[ "START INITIAL", "IS COMING SOON", "SO BE PREPARED!", "FOR THE FUN!","& FOR CREATIVITY", "WILL PUT YOU ONLINE IN NO TIME" ]'>
+    <span class="wrap"></span>
+  </a>
+</h1>
+<br>
+<!-- <div>
+    <input class="text" type="text" name="subscribe">
+    <input class="button" type="submit" value="SUBSCRIBE">
+     <button class="button">SUBSCRIBE</button>s
+
+</div> -->
+<!-- <h3 style="color: white; font-size: 30px; text-shadow: 3px 3px 7px #333;  font-family: 'Nunito Sans', sans-serif;">COMING SOON</h3> -->
+
+
+<!-- countdown timer ends here -->
+
+<!-- Typewriter text starts here -->
+
+<script>
+      var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid orange}";
+        document.body.appendChild(css);
+    };
+</script>
+
+<audio controls id="audio1">
+        <source src="4.mp3" type="audio/ogg">
+        <source src="4.mp3" type="audio/mpeg">
+    </audio> 
+        </div>
+      </div>
+    </body>
+</html>
